@@ -1,0 +1,179 @@
+<md-dialog aria-label="List dialog" flex="66">
+<md-dialog-content>
+<div class="md-whiteframe-6dp layout-column" ng-clock>
+	<md-toolbar class="md-hue-2">
+      <div class="md-toolbar-tools" style="background-color:#498fd1;">
+        <h2>
+          <span>{{adduser.title}}</span>
+        </h2>
+      </div>
+    </md-toolbar>
+  <div layout-fill flex  class="flex" style="padding:20px;">
+      <form name="userForm">
+        <!-- <div layout-gt-xs="row">
+          <md-input-container class="md-block" flex-gt-xs>
+            <label>Company (Disabled)</label>
+            <input ng-model="user.company" disabled>
+          </md-input-container>
+        </div> -->
+		<div layout-gt-xs="row">
+		<md-input-container flex-gt-sm style="margin:10px;">
+			<label>User Id</label>
+			<input name="userId" ng-required="true" ng-disabled="true" ng-model="adduser.user.userId">
+			<div ng-messages="userForm.userId.$error">
+				 <div ng-message="required">This Field is required!</div>
+			</div>
+		</md-input-container>
+		<md-input-container flex-gt-sm style="margin:10px;">
+			<label>User Name</label>
+      <md-icon md-svg-src="/images/user.svg" class="name"></md-icon>
+			<input name="userName" ng-required="true" ng-model="adduser.user.username">
+			<div ng-messages="userForm.userName.$error">
+				 <div ng-message="required">This Field is required!</div>
+         <div ng-message="duplicate">Please Enter another userId</div>
+			</div>
+		</md-input-container>
+		<md-input-container flex-gt-sm style="margin:10px;">
+			<label>Email</label>
+			<md-icon md-svg-src="/images/email.svg" class="name"></md-icon>
+			<input name="email" ng-required="true" ng-model="adduser.user.emailAddress" type="email">
+			<div ng-messages="userForm.email.$error">
+				 <div ng-message="required">This Field is required!</div>
+				 <div ng-message="email">Enter a valid emailId</div>
+			</div>
+		</md-input-container>
+		<md-input-container flex-gt-sm style="margin:10px;">
+			<label>Phone Number</label>
+			<md-icon md-svg-src="/images/phone.svg" class="name"></md-icon>
+			<input name="phone" ng-required="true" ng-model="adduser.user.phoneNo" type="number">
+			<div ng-messages="userForm.phone.$error">
+				 <div ng-message="required">This Field is required!</div>
+			</div>
+		</md-input-container>
+		</div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm style="margin:10px;">
+            <label>First name</label>
+			
+            <input name="firstname" ng-required="true" ng-model="adduser.user.firstName">
+			<div ng-messages="userForm.firstname.$error">
+				 <div ng-message="required">This Field is required!</div>
+			</div>
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm style="margin:10px;">
+            <label>Last Name</label>
+            <input ng-model="adduser.user.lastName">
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm style="margin:10px;">
+            <label>Hourly Pay</label>
+            <input ng-model="adduser.user.hourlyPay" type="number">
+          </md-input-container>
+        </div>
+        <div class="layout-row">
+        <md-chips style="margin-left:13px;"
+           class="flex project" ng-model="adduser.clientsList" 
+           md-on-add = "adduser.onClientSelect($chip,index)"
+           md-on-remove = "adduser.onRemoveSelect($chip, $index)"
+           filter-selected="true"
+              md-require-match="adduser.autocompleteDemoRequireMatch">
+            <md-autocomplete
+                md-selected-item="adduser.selectedItem"
+                md-no-cache="true"
+                md-search-text="adduser.searchText"
+                md-items="item in adduser.querySearch(adduser.searchText)"
+                md-item-text="item.clientName"
+                placeholder="Select Clients">
+              <span md-highlight-text="adduser.searchText">{{item.clientName}}</span>
+            </md-autocomplete>
+            <md-chip-template>
+              <span>
+                <strong>{{$chip.clientName}}</strong>
+              </span>
+            </md-chip-template>
+          </md-chips> 
+      <!-- <md-contact-chips
+        ng-model="adduser.projectList"
+        md-contacts="adduser.querySearch($query)"
+        md-contact-name="projectName"
+        md-require-match="true"
+        md-highlight-flags="i"
+        filter-selected="true"
+        placeholder="Select Projects"> -->
+    </md-contact-chips>
+
+        <md-chips style="margin-left:13px;"
+           class="flex project" ng-model="adduser.projectList" 
+           filter-selected="true"
+              md-require-match="adduser.autocompleteDemoRequireMatch">
+            <md-autocomplete
+                md-selected-item="adduser.projectSelectedItem"
+                md-search-text="adduser.projectSearchText"
+                md-no-cache="true"
+                md-items="item in adduser.projectQuerySearch(adduser.projectSearchText)"
+                md-item-text="item.projectName"
+                placeholder="Select Projects">
+              <span md-highlight-text="adduser.projectSearchText">{{item.projectName}}</span>
+            </md-autocomplete>
+            <md-chip-template>
+              <span>
+                <strong>{{$chip.projectName}}</strong>
+              </span>
+            </md-chip-template>
+          </md-chips>
+        </div>
+        <div class="layout-row" style="margin-top:20px;">
+          <md-input-container  class="md-block flex" style="margin:10px;">
+              <label>Address</label>
+              <input ng-model="adduser.user.address">
+          </md-input-container>
+          <md-input-container  class="md-block flex" style="margin:10px;">
+            <label>Contract Type</label>
+            <md-select name="contractType" ng-required="true" ng-model="adduser.user.contractType">
+              <md-option  ng-repeat="contract in adduser.contractType" ng-value="contract">
+                {{contract}}
+              </md-option>
+            </md-select>
+            <div ng-messages="userForm.contractType.$error">
+               <div ng-message="required">This Field is required!</div>
+            </div>
+          </md-input-container>
+          <!-- <md-input-container md-no-float class="md-block flex" style="margin:10px;">
+            <input ng-model="adduser.user.address2" placeholder="Address 2">
+          </md-input-container> -->
+       </div>
+        <!-- <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm style="margin:10px;">
+            <label>City</label>
+            <input ng-model="adduser.user.city">
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm style="margin:10px;">
+            <label>State</label>
+            <md-select ng-model="adduser.user.state">
+              <md-option ng-repeat="state in adduser.states" ng-value="{{state}}">
+                {{state}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm style="margin:10px;">
+            <label>Postal Code</label>
+            <input ng-model="adduser.user.postalCode" placeholder="12345">
+          </md-input-container>
+        </div> -->
+      </form>
+  </div>	
+	<div class="btn-toolbar" layout="column" layout-align="center end">
+		<div>
+      <md-button class="md-raised md-primary" ng-click="adduser.cancelProfileData()">
+      Cancel
+    </md-button>
+		<md-button ng-if="!adduser.editBtn" class="md-raised md-primary" ng-click="adduser.saveProfileData()">
+		  Save
+		</md-button>
+		 <md-button ng-if="adduser.editBtn" class="md-raised md-primary" ng-click="adduser.saveEditProfileData()">
+		  Save
+		</md-button> 
+		</div>
+	</div>
+</div>
+</md-dialog-content>
+</md-dialog>

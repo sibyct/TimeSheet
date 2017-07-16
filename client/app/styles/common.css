@@ -1,0 +1,212 @@
+.login-background{
+	background-image:url("/images/timesheet.jpg");
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+}
+
+.login-form {
+    width: 384px;
+    max-width: 384px;
+    padding: 32px;
+    background: #FFF;
+    text-align: center;
+}
+
+.logo {
+    width: 128px;
+    height: 128px;
+    line-height: 128px;
+    font-size: 86px;
+    font-weight: 500;
+    margin: 32px auto;
+    color: #FFF;
+    border-radius: 2px;
+}
+.md-accent-bg {
+    background-color: rgb(3,155,229);
+    color: rgba(255,255,255,1);
+}
+
+.login-form form {
+    width: 100%;
+    text-align: left;
+}
+.title {
+    font-size: 17px;
+    margin: 16px 0 32px;
+}
+.md-dispaly-container{
+	display:block !important;
+}
+
+.user-menu {
+    height: 64px;
+    padding: 0;
+}
+
+.user-profile{
+	border-radius:50%;
+	background-color:white;
+}
+.btn-toolbar{
+	margin-top:10px;
+	background-color:#d9d9d9;
+}
+.table-header{
+	background-color:#d9d9d9;
+	color:blue;
+}
+.table-header th{
+	font-style: normal!important;
+	font-weight: bold!important;
+	font-size: 15px!important;
+}
+.input-container md-input-container{
+	margin:0px!important;
+	padding:0px!important;
+}
+.input-field{
+	position:absolute!important;
+	bottom:0px;
+}
+.input-container div[class=md-errors-spacer]{
+	display:none!important;
+}
+
+.loading-cls{
+	position:absolute;
+	z-index:20;
+}
+.openmenu-background > md-menu > button:focus {
+    outline: none;
+    background: rgb(58, 72, 144)!important;
+}
+.load-mask{
+	position:absolute;
+	height:100%;
+	width:100%;
+	background-color:#949494;
+	opacity:.90;
+	z-index:100;
+}
+
+
+.custom-menu md-menu-bar.md-default-theme md-menu.md-open > button,
+.custom-menu md-menu-bar md-menu.md-open > button,
+.custom-menu md-menu-bar.md-default-theme md-menu > button:focus,
+.custom-menu md-menu-bar md-menu > button:focus{
+	outline: none;
+    background: rgb(69, 90, 204)!important;
+}
+
+.total{
+	text-align:right!important;
+	background: none;
+	border: none;
+	opacity: 1;
+	color: #D8331C;
+	font-family: arial !important;
+	font-size: 18px;
+	font-weight: bold;
+	letter-spacing: 0;
+	padding-right:5px;
+}
+.btn{
+	background:#3F51B5!important;
+}
+
+.btn:focus{
+	background:#3F51B5!important;
+}
+
+.inputdemoIcons md-input-container{
+	width: 50% !important;
+}
+  .inputdemoIcons .inputIconDemo {
+    min-height: 48px; }
+  .inputdemoIcons md-input-container:not(.md-input-invalid) > md-icon.email {
+    color: green; }
+  .inputdemoIcons md-input-container:not(.md-input-invalid) > md-icon.name {
+    color: dodgerblue; }
+  .inputdemoIcons md-input-container.md-input-invalid > md-icon.email,
+  .inputdemoIcons md-input-container.md-input-invalid > md-icon.name {
+    color: red; }
+
+
+.admin-leftnav{
+	color:white;
+	font-size: 16px!important;
+    line-height: 16px!important;
+}
+
+.input-error .md-errors-spacer{
+    display:none;
+}
+
+.project .md-chips{
+  padding: 0px;
+}
+.add-client-cls{
+  margin:10px;
+  height:auto;
+  position: relative;
+}
+
+.close-icon{
+  position: absolute;
+  top:3px;
+  right: 4px;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  background-color: #B5B5B5;
+  cursor:pointer;
+}
+.error svg{
+  fill:red;
+  height: 18px;
+  width: 18px;
+}
+
+.error-parent{
+  position: relative;
+}
+.error-child{
+  position: absolute;
+  top: 15px;
+}
+.tooltip{
+    width: auto;
+    height: auto;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    opacity: .5;
+     font-weight: 50;
+    font-size: 70%;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 100;
+}
+.tooltip::after {
+     content: " ";
+    position: absolute;
+    top: 50%;
+    right: 100%; /* To the left of the tooltip */
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+}
+.error-toast{
+  margin-right: 4px;
+}
+.error-toast svg{
+  fill:red;
+  height: 24px;
+  width: 24px;
+}

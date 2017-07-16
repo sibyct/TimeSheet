@@ -1,0 +1,28 @@
+<div class="layout-row flex login-background" layout-align="center">
+	<div class="login-form md-whiteframe-8dp" layout-margin>
+		<div class="logo md-accent-bg">
+			<span>
+				T
+			</span>
+		</div>
+		<div class="title">Log in to your account</div>
+		<form name="loginForm" novalidate="" ng-submit="login.loginBtnClick()">
+			<md-input-container md-no-float class="md-dispaly-container">
+				<input name="username" type="text" placeholder="Username" required ng-model="login.name"/>
+				<div ng-messages="loginForm.username.$error">
+				  <div ng-message="required">This Field is required!</div>
+				</div>
+				</md-input-container >
+				<md-input-container md-no-float class="md-dispaly-container">
+					<input name="password"type="password" placeholder="Password" required ng-model="login.password"/>
+					<div ng-messages="loginForm.password.$error" multiple md-auto-hide="true">
+						<div ng-message="required">This Field is required!</div>
+						<div ng-message="wrongPassword">The Username and password you entered don't match!</div>
+					</div>
+				</md-input-container>
+				<div layout="row" layout-align="center">
+					<md-button type="submit" md-no-ink class="md-primary md-raised">Login</md-button>
+				</div>
+			</form>
+		</div>
+	</div>

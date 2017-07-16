@@ -1,0 +1,106 @@
+<div layout="column" layout-fill ng-clock>
+		<div class="md-whiteframe-8dp layout-row table-container" style="margin:10px;">
+			<div style="margin-top:25px;margin-left:20px;">Select Date</div>
+			<md-input-container style="margin:20px;">
+				<md-select ng-model="timesheet.startEndDate" ng-change = "timesheet.getDateInfoBetweenDates()" placeholder="Select Date">
+					<md-option ng-value="opt" ng-repeat="opt in timesheet.dates">{{ opt }}</md-option>
+				</md-select>
+			</md-input-container>
+		</div>
+		<div class="md-whiteframe-13dp flex layout-column" style="margin:10px;">
+			<md-table-container>
+				<table md-table>
+					<thead md-head>
+						<tr md-row>
+							<th width="10%" md-column><span><b>Date</b></span></th>
+							<th width="15%" md-column ><span><b>Clients</b></span></th>
+							<th width="20%" md-column ><span><b>Project</b></span></th>
+							<th width="20%" md-column><b>Project Type</b></th>
+							<th width="10%" md-column><b>Hour's Worked</b></th>
+							<th width="20%" md-column><b>Comments</b></th>
+							<th width="5%" md-column><b></b></th>
+						</tr>
+					</thead>
+				</table>
+			</md-table-container>
+			<form name="usertimesheet" class="flex" style = "overflow:auto">
+				<md-content>
+					<md-table-container>
+						<table md-table>
+							<tbody md-body>
+								<tr style="height:44px;" class="input-container" md-row ng-repeat="data in timesheet.timedata track by $index">
+									<td width="10%" md-cell>{{timesheet.formatDate(data.date)}}</td>
+									<td md-cell width="15%">
+										<md-input-container>
+											<md-select ng-model="data.clients" placeholder="Select Client" ng-disabled="data.submitted==1">
+												<md-option ng-value="opt.clientName" ng-repeat="opt in timesheet.clients">{{ opt.clientName  }}</md-option>
+											</md-select>
+											</md-input-container>
+									</td>
+									<td width="20%" md-cell>
+										<md-input-container>
+											<md-select ng-model="data.project" placeholder="Select Project" ng-disabled="data.submitted==1">
+												<md-option ng-value="opt.projectName" ng-repeat="opt in timesheet.projects">{{ opt.projectName  }}</md-option>
+											</md-select>
+											</md-input-container>
+										</td>
+										<td width="20%" md-cell>
+											<md-input-container>
+												<md-select ng-model="data.projectType" placeholder="Select Project Type" ng-disabled="data.submitted==1">
+													<md-option ng-value="opt" ng-repeat="opt in timesheet.projectTypes">{{ opt}}</md-option>
+												</md-select>
+											</md-input-container>
+										</td>
+										<td width="10%" md-cell>
+											<div class="layout-row">
+												<md-input-container>
+													<input ng-model="data.hours"
+													 numbers-only
+													 required
+													 max="timesheet.maxHours"
+													 name = "hours{{$index}}"
+													 ng-disabled="data.submitted==1"/>
+												</md-input-container>
+
+												<error-msg
+													required-msg="This Field is required"
+													max-msg="value should be less"
+													message="usertimesheet['hours'+$index].$error">
+												<error-msg>
+											</div>
+											</td>
+											<td width="20%" md-cell>
+												<md-input-container>
+													<input ng-model="data.comments" ng-disabled="data.submitted==1">
+													</md-input-container>
+											</td>
+											<td width="10%" md-cell>
+												<md-icon style="cursor:pointer"
+												 ng-click = "timesheet.addDate(data,$parent.$index)"
+												 ng-if="timesheet.checkAddBtn(data)" md-svg-src="images/addCircle.svg" aria-label="android "></md-icon>
+												 <md-icon style="cursor:pointer"
+												 ng-click = "timesheet.deleteNewDate(data,$parent.$index)"
+												 ng-if="timesheet.checkdelBtn(data)" md-svg-src="images/delete.svg" aria-label="android "></md-icon>
+											</td>
+								</tr>
+								<tr md-row>
+									<td md-cell colspan="2" class="total">Total</td>
+									<td md-cell colspan="2"style="margin-left:5px;">{{timesheet.total}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</md-table-container>
+					</md-content>
+				</form>
+				<div  layout="column" layout-align="center end">
+					<div>
+					<md-button class="md-raised md-primary" ng-click="timesheet.save()">
+			Save
+					</md-button>
+					<md-button class="md-raised md-primary" ng-click="timesheet.submitTimeSheet()">
+			Submit
+					</md-button>
+					</div>
+				</div>
+			</div>
+		</div>

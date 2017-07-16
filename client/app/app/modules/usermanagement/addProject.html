@@ -1,0 +1,89 @@
+<md-dialog aria-label="List dialog" flex="30">
+<md-dialog-content>
+  <div class="flex layout-column user-display" style="height:500px;">
+    <md-toolbar class="md-hue-2">
+      <div class="md-toolbar-tools" style="background-color:#498fd1;">
+        <h2>
+          <span>Add Clients</span>
+        </h2>
+      </div>
+    </md-toolbar>
+    <div class="flex" style="overflow:auto;">
+       <form name="addclientForm">
+          <div class="md-whiteframe-12dp add-client-cls"
+           ng-repeat="data in addProject.clients track by $index">
+              <div class="layout-column" style="margin:10px;">
+                <ng-form name="clientForm-{{$index}}">
+                 <md-icon class="close-icon" ng-click="addProject.deleteClient(data,$index)" md-svg-src="/images/close.svg" aria-label="close Icon "></md-icon>
+                  <div style="margin-top:5px;color:#B5B5B5">Client Name</div>
+                  <div class="layout-column">
+                    <md-input-container class="flex" style="margin:0px;">
+                            <input name="clientname-{{$index}}" class="flex" ng-model="data.clientName">
+                      </md-input-container>
+                  </div>
+                   <div style="color:#B5B5B5">Project Name</div>
+                  <div style="margin-bottom:10px;">
+                    <md-chips ng-required="true" name="project-{{$index}}" ng-model="data.projects" readonly="addProject.readonly" md-removable="addProject.removable"
+                    md-transform-chip="addProject.newObj($chip)"
+                    placeholder="Add Projects"
+                     md-enable-chip-edit="true">
+                      <md-chip-template>
+                      <span>
+                        <strong>{{$chip.projectName}}</strong>
+                      </span>
+                    </md-chip-template>
+                   </md-chips>
+                    <div ng-messages="clientForm-[$index].project-[$index].$error" ng-if="clientForm-[$index].$dirty">
+                      <div ng-message="required">You reached the maximum amount of chips</div>
+                   </div>
+                  </div>
+                   </ng-form>
+              </div>
+          </div>
+      </form>
+    </div>
+     <!-- <md-table-container flex>
+      <table md-table>
+        <thead md-head class="table-header">
+          <tr md-row>
+            <th width="50%" md-column><span><b>Project Name</b></span></th>
+            <th width="50%" md-column></th>
+          </tr>
+        </thead
+        <tbody md-body>
+          <tr style="height:44px;" md-row ng-repeat="data in addProject.projectList track by $index">
+          <td  ng-if="!data.edit" md-cell ><b>{{data.projectName}}</b></td>
+          <td md-cell ng-if="data.edit">
+             <md-input-container class="input-error" flex-gt-sm  style="margin:0px;padding:0px;">
+              <input  ng-model="data.projectName" />
+            </md-input-container>
+          </td>
+          <td md-cell>
+            <div class="layout-row">
+               <md-button ng-if="data.edit" aria-label="Use Android" ng-click="addProject.done(data)">
+                Done
+              </md-button>
+               <md-button style="width:40px" aria-label="Use Android" ng-click="addProject.deleteRow(data,$index)">
+                <md-icon md-svg-src="/images/delete.svg"></md-icon>
+              </md-button>
+
+            </div>
+          </td>
+          </tr>
+        </tbody>
+      </table>
+    </md-table-container>  -->
+    <div class="btn-toolbar" style="margin:5px;" layout="row" layout-align="end end">
+      <md-button style="width:120px;" ng-click="addProject.addnewProject()" class="md-raised md-primary">
+      Add Project
+    </md-button>
+    <md-button style="width:120px;" ng-click="addProject.cancel()" class="md-raised md-primary">
+    Cancel
+  </md-button>
+    <md-button style="width:70px;" ng-click="addProject.save()" class="md-raised md-primary">
+      Save
+    </md-button>
+    </div>
+  </div>
+</md-dialog-content>
+</md-dialog>

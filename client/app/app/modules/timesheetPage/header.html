@@ -1,0 +1,60 @@
+<div class="layout-column flex">
+<md-toolbar class="toolbar">
+  <div class="md-toolbar-tools">
+    <span>TIme Sheet</span>
+    <!-- fill up the space between left and right area -->
+    <span flex></span>
+    <div class="layout-row">
+      <md-menu-bar class="user-menu">
+        <md-menu style="height:60px;">
+          <button style="height:55px;" ng-click="$mdOpenMenu()" class="layout-row btn">
+            <div>
+              <svg fill="#FFFFFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
+              </svg>
+            </div>
+          </button>
+          <md-menu-content style="min-width:120px;">
+              <md-menu-item>
+                <md-button>
+                  <md-icon md-svg-src="/images/userProfile.svg"></md-icon>
+                  Profile
+                </md-button>
+              </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+        <md-menu style="height:64px;" class="openmenu-background">
+          <button style="height:64px;" ng-click="$mdOpenMenu()" class="layout-row btn">
+            <div class="user-profile">
+              <img style="border-radius:50%;margin-top:3px;margin-left:3px;margin-right:3px;" width="30" height="30" src="/images/user.jpg">
+            </div>
+            </button>
+            <md-menu-content style="min-width:120px;">
+              <md-menu-item>
+                <md-button ng-click="goToprofile()">
+                  <md-icon md-svg-src="/images/userProfile.svg"></md-icon>
+                  Profile
+                </md-button>
+              </md-menu-item>
+              <md-menu-item>
+                <md-button ng-click="changePassword()">
+                  <md-icon md-svg-src="/images/settings.svg"></md-icon>
+                  ChangePassword
+                </md-button>
+              </md-menu-item>
+              <md-menu-divider></md-menu-divider>
+              <md-menu-item>
+                <md-button ng-click="logout()">
+                  <md-icon md-svg-src="/images/logout.svg"></md-icon>
+                  Logout
+                </md-button>
+              </md-menu-item>
+            </md-menu-content>
+          </md-menu>
+
+        </md-menu-bar>
+      </div>
+    </div>
+  </md-toolbar>
+<div ui-view class="layout-column flex content"></div>
+</div>

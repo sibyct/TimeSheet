@@ -1,0 +1,60 @@
+<div layout="column" layout-fill ng-clock class="userdetail-view">
+
+
+	<div class="md-whiteframe-8dp flex layout-column user-display" style="margin:10px;">
+		<md-table-container flex>
+			<table md-table>
+				<thead md-head>
+					<tr md-row>
+						<th width="10%" md-column><span><b>EmpId</b></span></th>
+						<th width="10%" md-column><span><b>User Name</b></span></th>
+						<th width="10%" md-column ><span><b>Name</b></span></th>
+						<th width="10%" md-column><b>Email Id</b></th>
+						<th width="10%" md-column><b>Phone Number</b></th>
+						<th width="5%" md-column></th>
+						<th width="5%" md-column></th>
+						<th width="5%" md-column></th>
+					</tr>
+				</thead
+				<tbody md-body>
+					<tr style="height:44px;" md-row ng-repeat="data in userlist.data">
+					<td md-cell>{{data.userId}}</td>
+					<td md-cell>{{data.username}}</td>
+					<td md-cell>{{data.firstName}}</td>
+					<td md-cell>{{data.emailAddress}}</td>
+					<td md-cell>{{data.phoneNo}}</td>
+					<td md-cell style="padding:0px;">
+						<md-button style="min-width:50px;"
+						 aria-label="Use Android" ng-click="userlist.editUser(data)">
+							<md-icon md-svg-src="/images/edit.svg"></md-icon>
+						</md-button>
+					</td>
+					<td md-cell style="padding:0px;">
+						<md-button style="min-width:50px;"
+						aria-label="Use Android" ng-click="userlist.deleteUser(data)">
+							<md-icon md-svg-src="/images/delete.svg"></md-icon>
+						</md-button>
+					</td>
+					<td md-cell style="padding:0px;">
+						<md-button
+						aria-label="reset" class="md-raised md-primary" ng-click="userlist.resetPassword(data)">
+						 Reset Password
+						</md-button>
+					</td>
+					</tr>
+				</tbody>
+			</table>
+		</md-table-container>
+		<div  style="margin:5px;" layout="row" layout-align="end end">
+			<md-button style="width:120px;" ng-click="userlist.addProject()" class="md-raised md-primary">
+				Add Project
+			</md-button>
+		<md-button style="width:70px;" ng-click="userlist.addUser()" class="md-raised md-primary">
+			Add User
+		</md-button>
+		<!-- <md-button style="width:70px;" ng-click="userlist.addUser()" class="md-raised md-primary">
+			Add User
+		</md-button> -->
+		</div>
+	</div>
+</div>

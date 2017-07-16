@@ -1,0 +1,58 @@
+
+<div>
+<md-toolbar>
+  <div style="margin:10px;">
+    <div class="layout-row">
+			<md-button class="md-icon-button" aria-label="Settings" ng-click="profile.goBack()">
+				<md-icon md-svg-icon="/images/back.svg"></md-icon>
+			</md-button>
+			<div style="margin-top:10px;">User Info</div>
+    </div>
+    </div>
+  </md-toolbar>
+	<md-content layout-padding flex class="md-whiteframe-8dp" style="margin:12px;">
+    <div>
+      <form name="userForm" class="inputdemoIcons layout-column">
+		<md-input-container flex-gt-sm style="margin:10px;">
+			<label>Email</label>
+			<md-icon md-svg-src="/images/email.svg" class="name"></md-icon>
+			<input name="email" ng-required="true" ng-model="profile.user.emailAddress" type="email">
+			<div ng-messages="userForm.email.$error">
+				 <div ng-message="required">This Field is required!</div>
+				 <div ng-message="email">Enter a valid emailId</div>
+			</div>
+		</md-input-container>
+		<md-input-container flex-gt-sm style="margin:10px;">
+			<label>Phone Number</label>
+			<md-icon md-svg-src="/images/phone.svg" class="name"></md-icon>
+			<input name="phone" ng-required="true" ng-model="profile.user.phoneNo" type="number">
+			<div ng-messages="userForm.phone.$error">
+				 <div ng-message="required">This Field is required!</div>
+			</div>
+		</md-input-container>
+    <md-input-container class="md-block" flex-gt-sm style="margin:10px;">
+            <label>First name</label>
+			<md-icon md-svg-src="/images/user.svg" class="name"></md-icon>
+            <input name="firstname" ng-required="true" ng-model="profile.user.firstName">
+			<div ng-messages="userForm.firstname.$error">
+				 <div ng-message="required">This Field is required!</div>
+			</div>
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm style="margin:10px;">
+            <label>Last Name</label>
+            <input ng-model="profile.user.lastName">
+      </md-input-container>
+      <md-input-container class="md-block" style="margin:10px;">
+          <label>Address</label>
+          <input ng-model="profile.user.address">
+      </md-input-container>
+      <md-input-container md-no-float class="md-block" style="margin:10px;">
+          <input ng-model="profile.user.address2" placeholder="Address 2">
+      </md-input-container>
+      </form>
+		</div>
+		<div class="btn-postion">
+			<md-button class="md-raised md-primary" ng-click="profile.saveProfileData()">Save</md-button>
+		</div>
+  </md-content>
+</div>
